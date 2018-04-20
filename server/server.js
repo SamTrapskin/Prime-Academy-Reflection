@@ -9,7 +9,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('build'));
 
 /** ---------- EXPRESS ROUTES ---------- **/
-
+app.use('/view', viewRouter)
+app.use('/add', addRouter)
 
 /** ---------- START SERVER ---------- **/
 app.listen(port, function () {

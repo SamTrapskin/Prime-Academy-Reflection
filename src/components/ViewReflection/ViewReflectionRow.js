@@ -17,7 +17,7 @@ class ViewReflectionRow extends Component {
           // Each row is a component, brings in data from OrderTable.js
                   <tr>
                   <td>{this.props.reflection.topic}</td>
-                  <td>{moment().format('MMMM Do YYYY, h:mm:ss a')}</td>
+                  <td>{moment().format('ll')}</td>
                   <td>{this.props.reflection.description}</td>
                   </tr>
       );

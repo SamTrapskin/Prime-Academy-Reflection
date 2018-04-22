@@ -28,9 +28,9 @@ class ViewReflection extends Component {
         })
     }
 
-    componentDidMount() {
-        this.getReflection();
-    }
+    // componentDidMount() {
+    //     this.getReflection();
+    // }
 
     render() {
         let viewListItems = this.state.viewList.map((reflection) => {

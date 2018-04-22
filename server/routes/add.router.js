@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
 
   router.post('/', (req, res) => {
     console.log('entered server-side POST', req.body);
-    let customer = req.body;
+    let reflection = req.body;
     let queryText = `INSERT INTO "reflection" (topic, reflection) VALUES ($1, $2);`;
     pool.query(queryText, [topic.topic, reflection.reflection])
     .then(result => {

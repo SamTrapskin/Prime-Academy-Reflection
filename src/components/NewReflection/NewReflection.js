@@ -25,13 +25,13 @@ class NewReflection extends Component {
             });
         }
 
-        handleSubmit(event){
-            console.log('submit from NewReflectJS')
-            this.props.dispatch(
-                { type: 'ADD_REFLECTION' }
-            )
+        // handleSubmit(event){
+        //     console.log('submit from NewReflectJS')
+        //     this.props.dispatch(
+        //         { type: 'ADD_REFLECTION' }
+        //     )
 
-        }
+        // }
 
 
         render() {
@@ -45,8 +45,8 @@ class NewReflection extends Component {
                     <div className="reflectContainer">
                         <div className="reflectionItem">
                             <NewReflectionForm addEmployee={this.addEmployee} />
-                            <button onClick={this.addReflection}>[+]</button>
-                            <button onClick={this.removeReflection}>[-]</button>
+                            <button>[+]</button>
+                            <button>[-]</button>
                         </div>
                     </div>
                 </li>

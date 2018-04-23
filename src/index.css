@@ -2,7 +2,14 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  color: 686175;
 }
+
+  .nav {
+    display: inline;
+  }
+  
+
 
 .blue {
   margin-right: 20px;

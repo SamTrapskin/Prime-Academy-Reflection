@@ -19,9 +19,9 @@ class App extends Component {
             <h4><i>Prime Digital Academy Reflection</i></h4>
           </header>
           <nav>
-            <ul>
+            <ul className ="nav">
 
-              <li>
+              <li className ="nav">
                 <Link to="/add">Add New Reflection</Link>
               </li>
               <li>

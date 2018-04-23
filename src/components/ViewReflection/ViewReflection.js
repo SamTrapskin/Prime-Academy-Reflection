@@ -12,10 +12,13 @@ class ViewReflection extends Component {
     constructor(props) {
         super(props)
 
+        // CREATING EMPTY ARRAY (viewList) TO GET BACK DATABASE DATA
+
         this.state = ({
             viewList: []
         })
     }
+    //GET request for database reflection retreival //
 
     getReflection = () => {
         axios.get('/view').then((response) => {
@@ -32,27 +35,22 @@ class ViewReflection extends Component {
         this.getReflection();
     }
 
+
+
     render() {
-        let viewListItems = this.state.viewList.map((reflection) => {
+        let viewListItems = this.state.viewList.map((reflection) => {       //populating the viewListItems array//
             return (<ViewReflectionRow key={reflection.id} reflection={reflection} />)
         })
 
         return (
             // Each row is a component, brings in data from Orders.js
             <div>
-                <table>
-                    <tbody>
-                        <tr>
-                            <td>Topic</td>
-                            <td>Description</td>
-                            <td>Date</td>
-                        </tr>
+                
+                  
 
-                        {viewListItems}
+                <p>{viewListItems}</p>
 
-                    </tbody>
-                </table>
-
+                
             </div>
         );
     }

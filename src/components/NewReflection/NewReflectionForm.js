@@ -3,63 +3,66 @@ import NewReflection from './NewReflection.js';
 import { connect } from 'react-redux';
 import Button from 'react-bootstrap/lib/Button';
 import Jumbotron from 'react-bootstrap/lib/Jumbotron';
+import axios from 'axios';
 
 const mapReduxStateToProps = (reduxState) => ({
-    reduxState
-  });
-  
+	reduxState
+});
 
 class NewReflectionForm extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			formData: {
+				topic: '',
+				description: '',
+				date: ''
+			}
+		};
+	}
 
-    handleClick = () => {
-        this.props.dispatch(
-        {type: 'SUBMIT_BUTTON'}
-     )
-    }
+	submitForm = (event) => {
+        console.log(this.state, 'state');
+        event.preventDefault();
+        axios.post('/add', this.state.formData)
+            .then((response) => {
+                console.log('response', response);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+	};
 
-    handleOtherClick = () => {
-        this.props.dispatch(
-            {type:'DERP_BUTTON'}
-        )
-    }
-    render() {
-  
-      return (
-          // Each row is a component, brings in data from OrderTable.js
-          <div>
-                  <h2>Topic</h2>
-                  
-                  <input type ="text"/>
-                  
-                  <br />           
-                  <button onClick={this.handleClick}type="submit">Submit</button>
-                  <button onClick={this.handleOtherClick}type="submit">Derp</button>
-                  <Button bsStyle="primary">Primary</Button>
-                  <Jumbotron>
-                  <h2>Hello, world!</h2>
-                  <p>
-                    This is a simple hero unit, a simple jumbotron-style component for calling
-                    extra attention to featured content or information.
-                  </p>
-                  <p>
-                    <Button bsStyle="primary">Learn more</Button>
-                    <Button bsStyle="primary">Learn more</Button>
-                  </p>
-                </Jumbotron>;
-                <Jumbotron>
-                  <h1>Hello, world!</h1>
-                  <p>
-                    This is a simple hero unit, a simple jumbotron-style component for calling
-                    extra attention to featured content or information.
-                  </p>
-                  <p>
-                    <Button bsStyle="primary">Learn more</Button>
-                  </p>
-                </Jumbotron>;
-                  
-        </div>
-      );    
-    }
-  }
-  
-  export default connect() (NewReflectionForm);
+	handleOtherClick = () => {};
+	onInputChange = (event) => {
+		const { name } = event.target;
+		const { formData } = this.state;
+		formData[name] = event.target.value;
+		this.setState({
+			formData
+		});
+	};
+	render() {
+		const { formData } = this.state;
+		return (
+			// Each row is a component, brings in data from OrderTable.js
+			<div>
+				<h2>Topic</h2>
+				<form onSubmit={this.submitForm}>
+					<input value={formData.topic} onChange={this.onInputChange} name="topic" type="text" />
+
+					<br />
+					<h3>Description</h3>
+					<input value={formData.description} onChange={this.onInputChange} name="description" type="text" />
+
+					<h3>Date</h3>
+					<input value={formData.date} onChange={this.onInputChange} name="date" type="number" />
+
+					<button type="submit">Submit</button>
+				</form>
+			</div>
+		);
+	}
+}
+
+export default connect()(NewReflectionForm);

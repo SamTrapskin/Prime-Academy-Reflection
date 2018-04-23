@@ -15,8 +15,9 @@ const reducerOne = (state, action) => {
     return {}
 }
 const reducerTwo = (state, action) => {
-    if (action.type === "DERP_BUTTON"){
-        console.log('hey im reducer #2 ')
+    if (action.type === "Reducer_BUTTON"){
+        console.log('hey im the 2nd reducer')
+        console.log(this.state.reflectionItem)
 
     }
     return {}

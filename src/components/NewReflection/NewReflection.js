@@ -19,9 +19,9 @@ class NewReflection extends Component {
 
 
 
-        addReflection(newReflection) {
+        addReflection(createReflection) {
             this.setState({
-                reflectionItem: [...this.state.reflectionItem, newReflection],
+                reflectionItem: [...this.state.reflectionItem, createReflection],
             });
         }
 
